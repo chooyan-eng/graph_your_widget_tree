@@ -1,3 +1,5 @@
-## 0.0.1
+## 0.0.1 - 2024-04-11
 
-* TODO: Describe initial release.
+* Initial release!
+* Basic features to describe widget trees
+* Basic styling features
