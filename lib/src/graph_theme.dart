@@ -73,7 +73,7 @@ class GraphThemeData {
     this.borderColor = Colors.black,
     this.borderWidth = 1,
     this.backgroundColor,
-    this.textStyle,
+    this.textStyle = const TextStyle(),
     this.size = const Size(120, 60),
   });
 

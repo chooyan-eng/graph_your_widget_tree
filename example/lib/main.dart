@@ -11,6 +11,8 @@ enum BoxType {
   highlighted,
 }
 
+enum WidgetAppearance { normal, focused, disabled }
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
@@ -20,20 +22,17 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         body: Center(
           child: GraphTheme(
-            defaultTheme: const GraphThemeData(
-              textStyle: TextStyle(fontSize: 20),
-            ),
-            extraThemes: {
-              BoxType.focus: GraphThemeData(
+            defaultTheme: const GraphThemeData(),
+            extraThemes: const {
+              WidgetAppearance.focused: GraphThemeData(
+                textStyle: TextStyle(color: Colors.blue),
+                borderWidth: 4,
                 borderColor: Colors.blue,
-                backgroundColor: Colors.blue[50],
-                borderWidth: 2,
-                textStyle: const TextStyle(fontWeight: FontWeight.w700),
               ),
-              BoxType.highlighted: const GraphThemeData(
-                borderColor: Colors.red,
-                borderWidth: 2,
-                textStyle: TextStyle(color: Colors.red),
+              WidgetAppearance.disabled: GraphThemeData(
+                textStyle: TextStyle(color: Colors.grey),
+                borderWidth: 1,
+                borderColor: Colors.grey,
               ),
             },
             child: Padding(
@@ -43,24 +42,27 @@ class MainApp extends StatelessWidget {
                   name: 'MaterialApp',
                   child: WidgetEntry.multiple(
                     name: 'Scaffold',
-                    type: BoxType.focus,
                     children: [
-                      WidgetEntry.multiple(name: 'AppBar', children: [
-                        WidgetEntry.single(
-                          name: 'IconButton',
-                          child: WidgetEntry.leaf(name: 'Icon'),
-                        ),
-                      ]),
-                      WidgetEntry.multiple(name: 'Column', children: [
-                        WidgetEntry.leaf(name: 'Text'),
-                        WidgetEntry.leaf(
-                          name: 'Text',
-                          type: BoxType.highlighted,
-                        ),
-                      ]),
+                      WidgetEntry.multiple(
+                        name: 'AppBar',
+                        children: [
+                          WidgetEntry.single(
+                            name: 'IconButton',
+                            child: WidgetEntry.leaf(name: 'Icon'),
+                            type: WidgetAppearance.focused,
+                          ),
+                        ],
+                      ),
+                      WidgetEntry.multiple(
+                        name: 'Column',
+                        children: [
+                          WidgetEntry.leaf(name: 'Text'),
+                          WidgetEntry.leaf(name: 'Text'),
+                        ],
+                      ),
                       WidgetEntry.leaf(
                         name: 'Floating\nActionButton',
-                        type: BoxType.focus,
+                        type: WidgetAppearance.disabled,
                       ),
                     ],
                   ),
