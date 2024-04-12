@@ -1,11 +1,10 @@
 name: graph_your_widget_tree
 description: grap_your_widget_tree enables you to describe widget trees in your slide decks
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/chooyan-eng/graph_your_widget_tree
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
-  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
