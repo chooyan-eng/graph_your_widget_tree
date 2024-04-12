@@ -5,6 +5,8 @@ import 'package:graph_your_widget_tree/src/rendered_entry.dart';
 
 /// A utility class to calculate layout of the graph
 class Calculator {
+  const Calculator();
+
   /// calculate the desired width of the graph
   /// regardless of a given viewport
   double desiredGraphWidth(

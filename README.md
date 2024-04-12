@@ -23,8 +23,8 @@ This packages provides the features of
 
 - [x] Rendering a graph of a widget tree
 - [x] Styling each node of the widgets
-- [ ] Detecting events from the widget tree
-- [ ] Notifying the result of layout calculation in detail
+- [x] Detecting events from the widget tree
+- [x] Notifying the result of layout calculation in detail
 
 Every features is for making your slide decks more interactive.
 
@@ -212,3 +212,38 @@ Graph(
 As all the layouts and styles are updated on every rebuilding, you can manage the state of 'how each widget should be displayed' with whatever method you want, such as `StatefulWidget`, `riverpod` or even `Get`.
 
 This enables you to make slide decks with dinamically animating widget trees.
+
+## Events 
+
+`Graph` has currently 2 callbacks `onHover` and `onTap`. Both callbacks are called when each event happens on a `WidgetEntry`.
+
+```dart
+Graph(
+  onHover: (entry) {
+    log('hovered: ${entry?.name}');
+  },
+  onTap: (entry) {
+    log('tapped: ${entry.name}');
+  },
+)
+```
+
+## Notification
+
+By placing `NotificationListener<RenderDetailNotification>` somewhere above `Graph`, you can listen every update of a rendered widget tree.
+
+```dart
+NotificationListener<RenderDetailNotification> {
+  onNotification: (notification) {
+    // Do something with the rendered detail.
+    return false;
+  },
+  child: SomeWidget(
+    child: Graph(),
+  ),
+}
+```
+
+As `notification` has all the detail about rendered widgets on `Graph`, it enables you to overlay additional widgets based on positions of the widgets.
+
+See [Flutter doc](https://api.flutter.dev/flutter/widgets/NotificationListener-class.html) for more information about `NotificationListener`.

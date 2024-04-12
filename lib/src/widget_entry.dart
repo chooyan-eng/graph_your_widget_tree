@@ -2,7 +2,7 @@ import 'dart:math';
 
 /// An object representing a widget and its children in a widget tree.
 class WidgetEntry {
-  WidgetEntry._({
+  const WidgetEntry._({
     required this.name,
     required this.children,
     this.marginBetweenSubtrees,
