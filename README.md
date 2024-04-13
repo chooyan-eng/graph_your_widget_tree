@@ -13,9 +13,9 @@ and the Flutter guide for
 
 ## graph_your_widget_tree
 
-`graph_your_widget_tree` provides `Graph` widget that renders a model of a widget tree represented by [WidgetEntry] and its children.
+`graph_your_widget_tree` provides `Graph` widget that renders a model of a widget tree represented by `WidgetEntry` and its children.
 
-This package mainly aims to be used with other packages making slide decks, such as [flutter_deck]() or [slick_slides](), not for production apps.
+This package mainly aims to be used with other packages making slide decks, such as [flutter_deck](https://pub.dev/packages/flutter_deck) or [slick_slides](https://pub.dev/packages/slick_slides), not for production apps.
 
 ## Features
 

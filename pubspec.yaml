@@ -1,6 +1,6 @@
 name: graph_your_widget_tree
 description: grap_your_widget_tree enables you to describe widget trees in your slide decks
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/chooyan-eng/graph_your_widget_tree
 
 environment:

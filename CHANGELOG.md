@@ -1,3 +1,7 @@
+## 0.1.1 - 2024-04-13
+
+* Update README
+
 ## 0.1.0 - 2024-04-12
 
 * Add tap and hover events
