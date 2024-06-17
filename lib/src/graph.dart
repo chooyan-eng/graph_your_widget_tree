@@ -78,14 +78,20 @@ class Graph extends StatelessWidget {
                   boxSize: boxSize,
                   allRenderedEntries: renderedEntries,
                 );
-                return lines
-                    .map((line) => CustomPaint(
-                          painter: _ConnectionPainter(
-                            from: line.$1,
-                            to: line.$2,
-                          ),
-                        ))
-                    .toList();
+                return lines.map((line) {
+                  final theme = GraphTheme.of(
+                    context,
+                    type: line.$1.entry.type,
+                  );
+                  return CustomPaint(
+                    painter: _ConnectionPainter(
+                      from: line.$2,
+                      to: line.$3,
+                      color: theme.lineColor,
+                      width: theme.lineWidth,
+                    ),
+                  );
+                }).toList();
               },
             ).expand((e) => e),
           ],
@@ -99,16 +105,20 @@ class _ConnectionPainter extends CustomPainter {
   _ConnectionPainter({
     required this.from,
     required this.to,
+    required this.color,
+    required this.width,
   });
 
   final Offset from;
   final Offset to;
+  final Color color;
+  final double width;
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black
-      ..strokeWidth = 1;
+      ..color = color
+      ..strokeWidth = width;
 
     canvas.drawLine(from, to, paint);
   }

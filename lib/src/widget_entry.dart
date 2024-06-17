@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 /// An object representing a widget and its children in a widget tree.
 class WidgetEntry {
   const WidgetEntry._({
@@ -7,6 +9,7 @@ class WidgetEntry {
     required this.children,
     this.marginBetweenSubtrees,
     this.type,
+    this.key,
   });
 
   /// Creates a [WidgetEntry] with a single child.
@@ -14,8 +17,9 @@ class WidgetEntry {
     required String name,
     required WidgetEntry child,
     Enum? type,
+    Key? key,
   }) =>
-      WidgetEntry._(name: name, children: [child], type: type);
+      WidgetEntry._(name: name, children: [child], type: type, key: key);
 
   /// Creates a [WidgetEntry] with multiple children.
   factory WidgetEntry.multiple({
@@ -23,20 +27,23 @@ class WidgetEntry {
     required List<WidgetEntry> children,
     double? marginBetweenSubtrees,
     Enum? type,
+    Key? key,
   }) =>
       WidgetEntry._(
         name: name,
         children: children,
         marginBetweenSubtrees: marginBetweenSubtrees,
         type: type,
+        key: key,
       );
 
   /// Creates a [WidgetEntry] with no children.
   factory WidgetEntry.leaf({
     required String name,
     Enum? type,
+    Key? key,
   }) =>
-      WidgetEntry._(name: name, children: [], type: type);
+      WidgetEntry._(name: name, children: [], type: type, key: key);
 
   /// The name of the widget.
   final String name;
@@ -49,6 +56,9 @@ class WidgetEntry {
 
   /// The type of the widget.
   final Enum? type;
+
+  /// [Key] to identify the entry.
+  final Key? key;
 
   /// The number of extra branches below this entry.
   int get extraBranches {

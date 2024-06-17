@@ -97,7 +97,7 @@ class Calculator {
   }
 
   /// calculate [Offset]s for lines connecting [root] to its children
-  List<(Offset, Offset)> linesFrom(
+  List<(RenderedEntry, Offset, Offset)> linesFrom(
     WidgetEntry root, {
     required Size boxSize,
     required List<RenderedEntry> allRenderedEntries,
@@ -127,7 +127,7 @@ class Calculator {
           boxSize.width,
           boxSize.height,
         ).topCenter;
-        return (from, to);
+        return (childRenderedEntry, from, to);
       },
     ).toList();
   }

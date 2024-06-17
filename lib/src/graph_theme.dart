@@ -72,6 +72,8 @@ class GraphThemeData {
   const GraphThemeData({
     this.borderColor = Colors.black,
     this.borderWidth = 1,
+    this.lineColor = Colors.black,
+    this.lineWidth = 1,
     this.backgroundColor,
     this.textStyle = const TextStyle(),
     this.size = const Size(120, 60),
@@ -82,6 +84,12 @@ class GraphThemeData {
 
   /// The width of the border of the widget box.
   final double borderWidth;
+
+  /// The color of the border of the widget box.
+  final Color lineColor;
+
+  /// The width of the border of the widget box.
+  final double lineWidth;
 
   /// The color of the background of the widget box.
   final Color? backgroundColor;
